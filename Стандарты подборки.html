@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Стандарты оформления подборок</title>
+<link rel="stylesheet" href="ds/tokens.css">
+<link rel="stylesheet" href="ds/components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #EFECE6;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.deck {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; padding: 32px 0;
+}
+.page {
+  width: var(--page-w);
+  min-height: var(--page-h);
+  background: var(--color-paper);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.08);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  padding: 18mm 22mm;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── COVER ─────────────────────────────────── */
+.cover { padding: 0; }
+.cover-bg { position: absolute; inset: 0; z-index: 0; }
+.cover-bg .ds-sphere.malachite {
+  width: 145mm; height: 145mm;
+  right: -78mm; top: -62mm;
+}
+.cover-bg .ds-sphere.lavender {
+  width: 95mm; height: 95mm;
+  left: -58mm; bottom: -62mm;
+}
+.cover-content {
+  position: relative; z-index: 1;
+  height: 100%;
+  min-height: var(--page-h);
+  padding: 28mm 22mm;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+}
+.cover-top { display: flex; justify-content: flex-end; align-items: center; }
+.cover-meta-top {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+}
+.cover-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: 10pt;
+  letter-spacing: 0.06em;
+  color: var(--color-signal);
+  text-transform: uppercase;
+  margin-bottom: 8mm;
+}
+.cover-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 56pt;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+  max-width: 92%;
+  margin-bottom: 10mm;
+}
+.cover-lead {
+  font-family: var(--font-body);
+  font-size: 14pt;
+  line-height: 1.45;
+  max-width: 76%;
+}
+.cover-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+}
+
+/* ── HEADER/FOOTER ─────────────────────────── */
+.page-head, .page-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+}
+.page-head {
+  padding-bottom: 3mm;
+  border-bottom: var(--border-rule);
+  margin-bottom: 10mm;
+}
+.page-foot {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: var(--border-rule);
+}
+
+/* ── SECTIONS ──────────────────────────────── */
+section.block { margin-bottom: 11mm; }
+section.block:last-child { margin-bottom: 0; }
+
+.block-head {
+  display: grid;
+  grid-template-columns: 24mm 1fr;
+  gap: 6mm;
+  align-items: baseline;
+  margin-bottom: 5mm;
+  padding-bottom: 3mm;
+  border-bottom: var(--border-rule);
+}
+.block-num {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 22pt;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-ink);
+}
+.block-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 18pt;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.block-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.08em;
+  color: var(--color-signal);
+  text-transform: uppercase;
+  margin-bottom: 2mm;
+}
+
+p, li {
+  font-family: var(--font-body);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--color-ink);
+  text-wrap: pretty;
+}
+.muted { color: var(--color-ink-soft); }
+
+p + p { margin-top: 3mm; }
+
+ul.bullets { list-style: none; padding: 0; }
+ul.bullets li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 2mm;
+}
+ul.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.55em;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--color-ink);
+}
+ul.bullets li:last-child { margin-bottom: 0; }
+
+/* ── TABLE ─────────────────────────────────── */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 10pt;
+}
+table th, table td {
+  text-align: left;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--color-rule);
+  vertical-align: top;
+}
+table th {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+  font-weight: var(--weight-regular);
+  border-bottom: 1.5px solid var(--color-ink);
+}
+table td code {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  background: rgba(0,0,0,0.04);
+  padding: 1px 5px;
+  border-radius: 2px;
+  color: var(--color-ink);
+}
+
+/* ── PALETTE / SWATCHES ────────────────────── */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4mm 8mm;
+}
+.swatch {
+  display: flex; gap: 3mm; align-items: center;
+}
+.swatch-chip {
+  width: 14mm; height: 14mm;
+  border-radius: 3mm;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+.swatch-meta { font-size: 9.5pt; line-height: 1.3; }
+.swatch-meta b { font-family: var(--font-mono); font-size: 9pt; }
+.swatch-meta span { color: var(--color-ink-soft); }
+
+/* ── FONT SAMPLES ──────────────────────────── */
+.fonts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6mm;
+}
+.font-card {
+  border: var(--border-rule);
+  border-radius: var(--radius-soft);
+  padding: 5mm;
+}
+.font-card .label {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+  margin-bottom: 3mm;
+}
+.font-card .preview { font-size: 26pt; line-height: 1; margin-bottom: 3mm; letter-spacing: -0.02em; }
+.font-card .preview.unb { font-family: var(--font-display); font-weight: 700; }
+.font-card .preview.int { font-family: var(--font-body); font-weight: 500; }
+.font-card .preview.cou { font-family: var(--font-mono); font-size: 22pt; }
+.font-card .role { font-size: 9.5pt; color: var(--color-ink-soft); line-height: 1.4; }
+
+/* ── ANATOMY DIAGRAMS ──────────────────────── */
+.anatomy {
+  background: #fff;
+  border: var(--border-rule);
+  border-radius: var(--radius-soft);
+  padding: 6mm;
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  line-height: 1.5;
+  color: var(--color-ink);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── SUB-CARDS ─────────────────────────────── */
+.subcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  margin-top: 4mm;
+}
+.subcard {
+  border: var(--border-rule);
+  border-radius: var(--radius-soft);
+  padding: 4mm 5mm;
+  background: #fff;
+}
+.subcard h4 {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: 11pt;
+  margin-bottom: 2mm;
+}
+.subcard p { font-size: 9.5pt; color: var(--color-ink-soft); line-height: 1.45; }
+
+/* ── DO / DONT ─────────────────────────────── */
+.dodont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+}
+.dodont > div {
+  padding: 4mm 5mm;
+  border-radius: var(--radius-soft);
+}
+.do { background: var(--color-malachite-bg); border-left: 3px solid var(--color-malachite); }
+.dont { background: #FBECEC; border-left: 3px solid var(--color-signal); }
+.dodont h4 {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2mm;
+}
+.do h4 { color: #2F7A52; }
+.dont h4 { color: var(--color-signal); }
+.dodont ul { margin: 0; padding: 0; list-style: none; }
+.dodont li {
+  font-size: 9.5pt;
+  line-height: 1.4;
+  margin-bottom: 1.5mm;
+  padding-left: 12px;
+  position: relative;
+}
+.dodont li::before {
+  position: absolute;
+  left: 0; top: 0;
+}
+.do li::before { content: '✓'; color: #2F7A52; font-weight: 700; }
+.dont li::before { content: '✗'; color: var(--color-signal); font-weight: 700; }
+
+/* ── RATING SAMPLE ─────────────────────────── */
+.rating-sample {
+  display: flex; flex-direction: column;
+  gap: 3mm;
+  background: #fff;
+  border: var(--border-rule);
+  border-radius: var(--radius-soft);
+  padding: 5mm 6mm;
+}
+.rating-sample .row {
+  display: flex; flex-direction: column; gap: 1mm;
+  padding-bottom: 2mm;
+  border-bottom: var(--border-rule);
+}
+.rating-sample .row:last-child { border-bottom: none; padding-bottom: 0; }
+.rating-sample .lab {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: 8.5pt;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  text-transform: uppercase;
+}
+.rating-sample .dots { display: flex; gap: 4px; align-items: center; }
+.rating-sample .dots b { width: 9px; height: 9px; border-radius: 50%; background: var(--color-ink); display: inline-block; }
+.rating-sample .dots b.empty { width: 7px; height: 7px; background: transparent; border: 1px solid var(--color-ink); }
+
+/* ── CHECKLIST ─────────────────────────────── */
+.checklist {
+  display: flex; flex-direction: column; gap: 3mm;
+}
+.checklist-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 10pt; line-height: 1.45;
+}
+.checkbox {
+  width: 14px; height: 14px;
+  border: 1.5px solid var(--color-malachite);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* ── PRINT ─────────────────────────────────── */
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff; }
+  .deck { gap: 0; padding: 0; }
+  .page {
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ══════ COVER ══════════════════════════ -->
+  <section class="page cover" data-screen-label="01 Обложка">
+    <div class="cover-bg">
+      <div class="ds-sphere malachite"></div>
+      <div class="ds-sphere lavender"></div>
+    </div>
+    <div class="cover-content">
+      <div class="cover-top">
+        <div class="cover-meta-top">Стандарт · v1.0 · 10 мая 2026</div>
+      </div>
+      <div>
+        <div class="cover-eyebrow">Внутренний канон</div>
+        <h1 class="cover-title">Стандарты<br>оформления<br>подборок</h1>
+        <p class="cover-lead">Полный свод правил вёрстки: технические рамки, типографика, цветовая палитра, структура страниц, поведение ссылок и скриншотов, чек-лист перед публикацией.</p>
+      </div>
+      <div class="cover-bottom">
+        <span>14 разделов</span>
+        <span>4 страницы</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ PAGE 2 · ТЕХНИКА + ТИПОГРАФИКА ══════ -->
+  <section class="page" data-screen-label="02 Техника и типографика">
+    <div class="ds-sphere malachite" style="width:62mm;height:62mm;right:-38mm;top:-30mm;"></div>
+    <div class="inner">
+      <div class="page-head"><span>Стандарты подборок</span><span>02 / 04</span></div>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">01</div>
+          <div>
+            <div class="block-eyebrow">Технические рамки</div>
+            <h2 class="block-title">Лист, поля, печать</h2>
+          </div>
+        </div>
+        <table>
+          <thead><tr><th>параметр</th><th>значение</th></tr></thead>
+          <tbody>
+            <tr><td>Формат</td><td>A4 — 210 × 297 мм, портрет</td></tr>
+            <tr><td>Поля</td><td><code>--page-pad-y: 14mm</code> · <code>--page-pad-x: 18mm</code></td></tr>
+            <tr><td>Фон листа</td><td><code>--color-paper</code> (#FAFAFA)</td></tr>
+            <tr><td>Фон сцены</td><td>#EFECE6 — только экран, в печать не идёт</td></tr>
+            <tr><td>@page</td><td><code>size: A4; margin: 0;</code></td></tr>
+            <tr><td>Разрыв</td><td><code>page-break-after: always</code> · последняя — auto</td></tr>
+            <tr><td>Цвет в печати</td><td><code>print-color-adjust: exact</code></td></tr>
+            <tr><td>Overflow</td><td><code>hidden</code> на <code>.page</code> — сферы за краями обрезаются</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">02</div>
+          <div>
+            <div class="block-eyebrow">Шрифтовая иерархия</div>
+            <h2 class="block-title">Три гарнитуры — три голоса</h2>
+          </div>
+        </div>
+        <div class="fonts-grid">
+          <div class="font-card">
+            <div class="label">Display</div>
+            <div class="preview unb">Аа Бб</div>
+            <div class="role"><b>Unbounded Bold.</b> Большие заголовки, имена каналов, нумерация выпуска.</div>
+          </div>
+          <div class="font-card">
+            <div class="label">Body</div>
+            <div class="preview int">Аа Бб</div>
+            <div class="role"><b>Inter Regular / Medium.</b> Лиды, абзацы, описания, таблицы.</div>
+          </div>
+          <div class="font-card">
+            <div class="label">Mono</div>
+            <div class="preview cou">Аа Бб</div>
+            <div class="role"><b>Courier Prime.</b> Эйбро, мета, шапка-подвал листа, ссылки.</div>
+          </div>
+        </div>
+        <div style="margin-top: 5mm;">
+          <table>
+            <thead><tr><th>роль</th><th>шрифт · вес</th><th>кегль</th></tr></thead>
+            <tbody>
+              <tr><td>Заголовок обложки</td><td>Unbounded Bold</td><td>56pt · −0.035em</td></tr>
+              <tr><td>Лид обложки</td><td>Inter Regular</td><td>14pt · 1.45</td></tr>
+              <tr><td>Имя канала</td><td>Unbounded Bold</td><td>44pt · −0.035em</td></tr>
+              <tr><td>Eyebrow («Канал 0X / 0N»)</td><td>Courier Prime</td><td>9pt UPPERCASE · signal</td></tr>
+              <tr><td>Лид-абзац</td><td>Inter Medium</td><td>12pt · 1.55</td></tr>
+              <tr><td>Тело</td><td>Inter Regular</td><td>11pt · 1.55</td></tr>
+              <tr><td>Шапка / подвал листа</td><td>Courier Prime</td><td>8.5–9pt UPPERCASE</td></tr>
+              <tr><td>Ссылки</td><td>Courier Prime</td><td>10pt · подчеркивание</td></tr>
+            </tbody>
+          </table>
+          <p class="muted" style="margin-top: 3mm; font-size: 9.5pt;">Минимум для печати — 8.5pt. Меньше — нельзя.</p>
+        </div>
+      </section>
+
+      <div class="page-foot"><span>Раздел 01–02</span><span>Технический фундамент</span></div>
+    </div>
+  </section>
+
+  <!-- ══════ PAGE 3 · ЦВЕТ + СТРУКТУРА ══════ -->
+  <section class="page" data-screen-label="03 Цвет и структура">
+    <div class="ds-sphere lavender" style="width:75mm;height:75mm;left:-46mm;bottom:-44mm;"></div>
+    <div class="inner">
+      <div class="page-head"><span>Стандарты подборок</span><span>03 / 04</span></div>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">03</div>
+          <div>
+            <div class="block-eyebrow">Палитра</div>
+            <h2 class="block-title">Бумага, чернила, три пастели и сигнал</h2>
+          </div>
+        </div>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-chip" style="background:#FAFAFA;"></div><div class="swatch-meta"><b>--color-paper</b><br><span>#FAFAFA · фон листа</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#1A1A1A;"></div><div class="swatch-meta"><b>--color-ink</b><br><span>#1A1A1A · текст, тёмные блоки</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#6B6B6B;"></div><div class="swatch-meta"><b>--color-ink-soft</b><br><span>#6B6B6B · мета, второй голос</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#E0E0E0;"></div><div class="swatch-meta"><b>--color-rule</b><br><span>#E0E0E0 · линии, бордеры</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#9DD4B9;"></div><div class="swatch-meta"><b>--color-malachite</b><br><span>#9DD4B9 · сферы, callout</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#C5B4E8;"></div><div class="swatch-meta"><b>--color-lavender</b><br><span>#C5B4E8 · сферы</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#A3C8E8;"></div><div class="swatch-meta"><b>--color-sky</b><br><span>#A3C8E8 · сферы</span></div></div>
+          <div class="swatch"><div class="swatch-chip" style="background:#E63946;"></div><div class="swatch-meta"><b>--color-signal</b><br><span>#E63946 · только эйбро и точки</span></div></div>
+        </div>
+        <p class="muted" style="margin-top: 4mm;">Сигнальный красный — никогда не фон. Только эйбро, точки-маркеры и микро-чёрточки.</p>
+        <p class="muted" style="margin-top: 2mm;"><b>Чередование сфер по разворотам:</b> обложка — малахит + лаванда → стр. 2 малахит → стр. 3 лаванда → стр. 4 небо → стр. 5 малахит + лаванда.</p>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">04</div>
+          <div>
+            <div class="block-eyebrow">Сферы (фон)</div>
+            <h2 class="block-title">Дуга — а не круг</h2>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>Класс <code style="font-family:var(--font-mono);font-size:9pt;background:rgba(0,0,0,0.04);padding:1px 5px;border-radius:2px;">.ds-sphere</code> + модификатор цвета (<code style="font-family:var(--font-mono);font-size:9pt;">malachite / lavender / sky</code>).</li>
+          <li>Абсолютное позиционирование, <b>глубоко за край листа</b> — минимум −30 мм в любую сторону. Видна должна быть только дуга.</li>
+          <li>Размер 60–145 мм. На обложке самые крупные, на внутренних — компактнее.</li>
+          <li><b>Сферы не должны пересекаться с типографикой.</b> Если задевают заголовок или абзац — отодвигай дальше за край.</li>
+          <li>Между листами не перетекают — <code style="font-family:var(--font-mono);font-size:9pt;">overflow: hidden</code> на <code style="font-family:var(--font-mono);font-size:9pt;">.page</code>.</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">05</div>
+          <div>
+            <div class="block-eyebrow">Структура подборки</div>
+            <h2 class="block-title">5 страниц на 3 канала + бонус</h2>
+          </div>
+        </div>
+        <div class="anatomy">1. Обложка
+2. Канал 01 / 03
+3. Канал 02 / 03
+4. Канал 03 / 03
+5. Бонус (сообщество, ресурс) — всегда последняя</div>
+        <p class="muted" style="margin-top: 3mm;">Если бонуса нет — 4 страницы. Канон не нарушается, просто пятая отсекается.</p>
+      </section>
+
+      <div class="page-foot"><span>Раздел 03–05</span><span>Палитра и структура</span></div>
+    </div>
+  </section>
+
+  <!-- ══════ PAGE 4 · АНАТОМИЯ + РЕЙТИНГ ══════ -->
+  <section class="page" data-screen-label="04 Анатомия и рейтинги">
+    <div class="ds-sphere sky" style="width:88mm;height:88mm;right:-52mm;top:-50mm;"></div>
+    <div class="inner">
+      <div class="page-head"><span>Стандарты подборок</span><span>04 / 04</span></div>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">06</div>
+          <div>
+            <div class="block-eyebrow">Анатомия обложки</div>
+            <h2 class="block-title">Один заголовок, один лид, одна капсула</h2>
+          </div>
+        </div>
+        <div class="anatomy">┌────────────────────────────────────────┐
+│                          [мета справа] │  ← Подборка · 0X · дата
+│                                        │
+│ [eyebrow]                              │
+│ [Title в 2 строки]                     │
+│                                        │
+│ [Лид 1–2 строки, max-width 70%]        │
+│ [Капсула-ссылка на канал автора]       │  ← опционально
+│                                        │
+│                          [страниц·мин] │
+└────────────────────────────────────────┘</div>
+        <div class="dodont" style="margin-top: 4mm;">
+          <div class="do">
+            <h4>Делать</h4>
+            <ul>
+              <li>Капсула со ссылкой — в одном месте</li>
+              <li>Дата выпуска — мономерным сверху справа</li>
+              <li>Лид — короткий, 1–2 строки</li>
+            </ul>
+          </div>
+          <div class="dont">
+            <h4>Не делать</h4>
+            <ul>
+              <li>Дублировать «3 канала · 1 сообщество»</li>
+              <li>Ставить ссылку и сверху, и снизу</li>
+              <li>Раздувать обложку до пяти блоков</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">07</div>
+          <div>
+            <div class="block-eyebrow">Анатомия страницы канала</div>
+            <h2 class="block-title">Без больших нумераторов</h2>
+          </div>
+        </div>
+        <div class="anatomy">┌────────────────────────────────────────┐
+│ Подборка · название       0X / 0N      │  ← page-head
+│                                        │
+│ [eyebrow: Канал 0X / 0N]               │
+│ [ИМЯ КАНАЛА — 44pt]                    │
+│ [ссылка-моно с подчёркиванием]         │
+│                                        │
+│ ┌─[shot 16:9]────┐  ┌─ratings──────┐  │
+│ │  скриншот      │  │ Понятность   │  │
+│ │                │  │ ●●●●● ●○     │  │
+│ └────────────────┘  └──────────────┘  │
+│                                        │
+│ [Лид 12pt medium] [тело 11pt regular]  │
+│                                        │
+│ Канал 0X / 0N         [короткий тег]   │  ← page-foot
+└────────────────────────────────────────┘</div>
+        <ul class="bullets" style="margin-top: 3mm;">
+          <li><b>Никаких больших нумераторов «01/02/03»</b> на странице — счётчик уже есть в шапке и эйбро.</li>
+          <li>Eyebrow: только «Канал 0X / 0N». Платформу (YouTube/Telegram) не пишем — она ясна из ссылки.</li>
+          <li>Маркер уровня типа «узкая тема» допустим — добавляется через микро-черту.</li>
+          <li>Под скриншотом — никаких подписей-плейсхолдеров.</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">08</div>
+          <div>
+            <div class="block-eyebrow">Шкала рейтингов</div>
+            <h2 class="block-title">5 точек на категорию — механика, а не список</h2>
+          </div>
+        </div>
+        <div class="rating-sample">
+          <div class="row"><span class="lab">Понятность</span><span class="dots"><b></b><b></b><b></b><b></b><b></b></span></div>
+          <div class="row"><span class="lab">Универсальность</span><span class="dots"><b></b><b></b><b></b><b></b><b></b></span></div>
+          <div class="row"><span class="lab">Качество материала</span><span class="dots"><b></b><b></b><b></b><b></b><b class="empty"></b></span></div>
+          <div class="row"><span class="lab">Бесплатность</span><span class="dots"><b></b><b></b><b></b><b></b><b></b></span></div>
+        </div>
+        <ul class="bullets" style="margin-top: 3mm;">
+          <li><b>Состав категорий — гибкий.</b> На примере выше: «Понятность · Универсальность · Качество · Бесплатность». Для другой подборки набор может быть другим (например: «Глубина · Регулярность · Подача · Польза»). Фиксируется метрика категории — то, что её можно оценить от 0 до 5.</li>
+          <li><b>Количество категорий:</b> от 3 до 5. Меньше — теряется смысл, больше — рябит.</li>
+          <li><b>Шкала всегда из 5 точек.</b> Заполненные — 9px <code style="font-family:var(--font-mono);font-size:9pt;">background: --color-ink</code>; пустые — 7px с бордером <code style="font-family:var(--font-mono);font-size:9pt;">--color-ink</code>.</li>
+          <li><b>Структура строки:</b> лейбл UPPERCASE Inter Medium 8.5pt сверху, ряд точек снизу, между категориями — линия <code style="font-family:var(--font-mono);font-size:9pt;">--border-rule</code>. Последняя — без линии.</li>
+          <li><b>Расщепление шкалы</b> («если в теме / если нет») — два ряда точек с подписями допустимы для одной категории.</li>
+          <li><b>«Выход за шкалу»</b> (7 точек + курсивная сноска <code style="font-family:var(--font-mono);font-size:9pt;">.rating-note</code>) — художественный приём, не норма.</li>
+        </ul>
+      </section>
+
+      <div class="page-foot"><span>Раздел 06–08</span><span>Анатомия страниц</span></div>
+    </div>
+  </section>
+
+  <!-- ══════ PAGE 5 · ССЫЛКИ, СКРИНЫ, ЧЕК-ЛИСТ ══════ -->
+  <section class="page" data-screen-label="05 Ссылки, скриншоты, чек-лист">
+    <div class="ds-sphere malachite" style="width:120mm;height:120mm;right:-72mm;bottom:-72mm;"></div>
+    <div class="ds-sphere lavender" style="width:55mm;height:55mm;left:-40mm;top:50mm;"></div>
+    <div class="inner">
+      <div class="page-head"><span>Стандарты подборок</span><span>05 / 05</span></div>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">09</div>
+          <div>
+            <div class="block-eyebrow">Ссылки</div>
+            <h2 class="block-title">Все ссылки кликабельны. Без исключений.</h2>
+          </div>
+        </div>
+        <div class="subcards">
+          <div class="subcard">
+            <h4>Стандартная ссылка</h4>
+            <p><code>.entry-link</code>: Courier Prime 10pt, серое подчёркивание <code>--color-rule</code>, цвет <code>--color-ink-soft</code>. При hover — темнеет до <code>--color-ink</code>. Чистый URL без суффиксов.</p>
+          </div>
+          <div class="subcard">
+            <h4>Капсула-ссылка обложки</h4>
+            <p><code>.cover-channel</code>: бледная плашка с радиусом 999px, красная точка слева, стрелка → справа. Hover — инверсия в чернильный фон. Единственная в подборке.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">10</div>
+          <div>
+            <div class="block-eyebrow">Скриншоты</div>
+            <h2 class="block-title">Реальные превью, не плейсхолдеры</h2>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>Источник — реальные превью видео или страницы сообщества. Не нейросетевые иллюстрации.</li>
+          <li>Соотношение 16:9 для каналов (для сообщества тоже допустимо).</li>
+          <li>Файлы лежат в <code style="font-family:var(--font-mono);font-size:9pt;">assets/&lt;slug&gt;-shot.png</code>.</li>
+          <li>Подключение: <code style="font-family:var(--font-mono);font-size:9pt;">&lt;image-slot id="shot-&lt;slug&gt;" shape="rect" src="assets/…"&gt;</code>.</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">11–13</div>
+          <div>
+            <div class="block-eyebrow">Шапка, подвал, цитата, экспорт</div>
+            <h2 class="block-title">Сервисные правила</h2>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li><b>page-head:</b> слева — название подборки, справа — счётчик «0X / 0N». Линия снизу.</li>
+          <li><b>page-foot:</b> слева — позиция в подборке, справа — короткий человеческий тег. Линия сверху.</li>
+          <li><b>Цитата создателя</b> — компонент <code style="font-family:var(--font-mono);font-size:9pt;">.entry-quote</code>: малахитовая подложка, левая полоса 3px. Только на бонусной странице.</li>
+          <li><b>Экспорт в PDF:</b> через <code style="font-family:var(--font-mono);font-size:9pt;">*-print.html</code> с авто-печатью. В диалоге печати: Save as PDF, Margins → None, Background graphics → ON, Headers and footers → OFF.</li>
+        </ul>
+      </section>
+
+      <section class="block">
+        <div class="block-head">
+          <div class="block-num">14</div>
+          <div>
+            <div class="block-eyebrow">Чек-лист</div>
+            <h2 class="block-title">Перед публикацией</h2>
+          </div>
+        </div>
+        <div class="checklist">
+          <div class="checklist-item"><div class="checkbox"></div><span>Все ссылки кликабельны и открываются в новой вкладке (<code style="font-family:var(--font-mono);font-size:9pt;">target="_blank" rel="noopener"</code>)</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>Нет дублей ссылок и текстов между листами</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>Нет технических подсказок («перетащи сюда», «↑ скриншот…»)</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>Сферы не пересекаются с типографикой</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>Все скриншоты на месте, лежат в <code style="font-family:var(--font-mono);font-size:9pt;">assets/</code></span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>Нумерация выпуска и счётчики страниц совпадают (0X / 0N)</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>В eyebrow нет платформ (YouTube / Telegram)</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>На бонусной странице — только одна ссылка на бот</span></div>
+          <div class="checklist-item"><div class="checkbox"></div><span>Шкала рейтингов — 3–5 категорий, по 5 точек каждая, с разделительными линиями</span></div>
+        </div>
+      </section>
+
+      <div class="page-foot"><span>Раздел 09–14</span><span>Финальная проверка</span></div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
