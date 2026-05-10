@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Template · Guide (A4 · 4 pages)</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #EFECE6; font-family: var(--font-body); color: var(--color-ink); }
+
+/* экранная подложка — серая, чтобы видеть края страниц */
+.deck {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; padding: 32px 0;
+}
+
+/* стили самого листа */
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  background: var(--color-paper);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.08);
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  padding: var(--page-pad-y) var(--page-pad-x);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── COVER ────────────────────────────────── */
+.cover { padding: 0; }
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.cover-bg .ds-sphere.malachite {
+  width: 130mm; height: 130mm;
+  right: -50mm; top: -40mm;
+}
+.cover-bg .ds-sphere.lavender {
+  width: 90mm; height: 90mm;
+  left: -45mm; bottom: -55mm;
+}
+.cover-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 28mm 22mm;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+}
+.cover-top { display: flex; justify-content: space-between; align-items: center; }
+.cover-brand {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cover-brand-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--color-signal);
+  display: inline-block;
+}
+.cover-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 38pt;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.05;
+  max-width: 70%;
+}
+.cover-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  color: var(--color-ink);
+  letter-spacing: 0.04em;
+}
+
+/* ── INNER PAGES ──────────────────────────── */
+.intro-block {
+  margin-top: 8mm;
+  max-width: 62%;
+}
+.intro-block .ds-eyebrow { margin-bottom: 4mm; }
+.intro-block .ds-h2 { margin-bottom: 6mm; }
+.intro-block .ds-lead { color: var(--color-ink); }
+
+.section-block { margin-top: 12mm; }
+.section-block .ds-eyebrow { margin-bottom: 3mm; }
+.section-block .ds-h2 { margin-bottom: 5mm; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 3mm; }
+.stack { display: flex; flex-direction: column; gap: 4mm; }
+.stack-tight { display: flex; flex-direction: column; gap: 2mm; }
+
+/* spacer between blocks */
+.spacer { flex: 1 1 auto; min-height: 4mm; }
+
+/* placeholder marks (видны только на экране) */
+.placeholder {
+  outline: 1px dashed var(--color-rule);
+  outline-offset: 2px;
+}
+
+/* ── PRINT ────────────────────────────────── */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff; }
+  .deck { gap: 0; padding: 0; }
+  .page {
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ══════ PAGE 1 · COVER ══════ -->
+  <div class="page cover">
+    <div class="cover-bg">
+      <div class="ds-sphere malachite"></div>
+      <div class="ds-sphere lavender"></div>
+    </div>
+    <div class="cover-content">
+      <div class="cover-top">
+        <div class="cover-brand"><span class="cover-brand-dot"></span>Гайд · 0X</div>
+      </div>
+      <div>
+        <div class="ds-eyebrow" style="margin-bottom:6mm;">ВЫПУСК 0X</div>
+        <h1 class="cover-title">Заголовок гайда —<br>в две-три строки</h1>
+      </div>
+      <div class="cover-bottom">
+        <span>4 страницы · ~6 минут</span>
+        <span>2025</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ PAGE 2 · INTRO + RULES 1–2 ══════ -->
+  <div class="page">
+    <div class="ds-sphere malachite" style="width:78mm;height:78mm;right:-22mm;bottom:-30mm;"></div>
+    <div class="inner">
+      <div class="ds-page-header">
+        <span>Название гайда</span><span>02</span>
+      </div>
+
+      <div class="intro-block">
+        <div class="ds-eyebrow">ВВЕДЕНИЕ</div>
+        <h2 class="ds-h2">Короткая фраза, которая задаёт тон</h2>
+        <p class="ds-lead">Лидерский абзац на 2–3 строки. Что узнает читатель и почему ему это нужно.</p>
+      </div>
+
+      <div class="section-block">
+        <div class="ds-eyebrow">ПРАВИЛА</div>
+        <h2 class="ds-h2">4 правила, которые меняют всё</h2>
+
+        <div class="grid-2">
+          <div class="ds-rule-card">
+            <div class="ds-rule-num">01</div>
+            <h4>Заголовок правила</h4>
+            <p>Описание на 1–2 предложения. Конкретно и просто.</p>
+          </div>
+          <div class="ds-rule-card lavender">
+            <div class="ds-rule-num">02</div>
+            <h4>Заголовок правила</h4>
+            <p>Описание на 1–2 предложения. Конкретно и просто.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="ds-callout lavender">
+        <div class="ds-callout-label">Полезная привычка</div>
+        <p>Короткий совет на одну строку.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ PAGE 3 · RULES 3–4 + STEPS ══════ -->
+  <div class="page">
+    <div class="ds-sphere lavender" style="width:48mm;height:48mm;left:-14mm;bottom:-18mm;"></div>
+    <div class="inner">
+      <div class="ds-page-header">
+        <span>Название гайда</span><span>03</span>
+      </div>
+
+      <div class="section-block" style="margin-top: 4mm;">
+        <div class="grid-2">
+          <div class="ds-rule-card sky">
+            <div class="ds-rule-num">03</div>
+            <h4>Заголовок правила</h4>
+            <p>Описание на 1–2 предложения.</p>
+          </div>
+          <div class="ds-rule-card">
+            <div class="ds-rule-num">04</div>
+            <h4>Заголовок правила</h4>
+            <p>Описание на 1–2 предложения.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="ds-eyebrow">ШАГИ</div>
+        <h2 class="ds-h2">Как применить — пошагово</h2>
+
+        <div class="stack">
+          <div class="ds-step">
+            <div class="ds-step-num">1</div>
+            <div>
+              <h4>Действие первое</h4>
+              <p>Что нажать, что написать, что увидеть.</p>
+            </div>
+          </div>
+          <div class="ds-step">
+            <div class="ds-step-num lavender">2</div>
+            <div>
+              <h4>Действие второе</h4>
+              <p>Конкретный приём, без воды.</p>
+            </div>
+          </div>
+          <div class="ds-step">
+            <div class="ds-step-num sky">3</div>
+            <div>
+              <h4>Действие третье</h4>
+              <p>Что должно получиться в результате.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════ PAGE 4 · EXAMPLE + CHECKLIST + FINAL ══════ -->
+  <div class="page">
+    <div class="ds-sphere sky" style="width:95mm;height:95mm;right:24mm;bottom:14mm;"></div>
+    <div class="inner">
+      <div class="ds-page-header">
+        <span>Название гайда</span><span>04</span>
+      </div>
+
+      <div class="section-block" style="margin-top: 4mm;">
+        <div class="ds-eyebrow">ПРИМЕР</div>
+        <h2 class="ds-h2">Как это выглядит на практике</h2>
+
+        <div class="ds-example">
+          <div class="ds-example-header">Постановка задачи</div>
+          <div class="ds-example-body">
+            <div class="ds-example-row"><div class="ds-example-label">Было</div><div>Описание исходного состояния.</div></div>
+            <div class="ds-example-row"><div class="ds-example-label">Хотим</div><div>Описание желаемого результата.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <div class="ds-eyebrow">ЧЕК-ЛИСТ</div>
+        <h2 class="ds-h2">Перед тем как опубликовать</h2>
+
+        <div class="ds-checklist">
+          <div class="ds-check-row"><div class="ds-checkbox"></div><span>Пункт первый — конкретное действие или проверка.</span></div>
+          <div class="ds-check-row"><div class="ds-checkbox"></div><span>Пункт второй.</span></div>
+          <div class="ds-check-row"><div class="ds-checkbox"></div><span>Пункт третий.</span></div>
+          <div class="ds-check-row"><div class="ds-checkbox"></div><span>Пункт четвёртый.</span></div>
+        </div>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="ds-final">
+        <div class="ds-final-label">Главное запомнить</div>
+        <p>Одна-две фразы, формулирующие основной тезис гайда.</p>
+        <p><strong>Короткое правило → следующее → последнее.</strong></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Template · Post (1080×1350)</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #EFECE6;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+}
+.deck {
+  display: flex; flex-wrap: wrap;
+  gap: 32px; padding: 32px;
+  justify-content: center;
+}
+
+/* пост — фиксированный канвас */
+.post {
+  position: relative;
+  background: var(--color-paper);
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+}
+.post.tall   { width: 1080px; height: 1350px; }
+.post.square { width: 1080px; height: 1080px; }
+
+.post-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 80px 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* шапка поста */
+.post-head {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--color-ink);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.brand-dot {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--color-signal);
+  margin-right: 12px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* контент */
+.post-body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 32px; }
+.post-eyebrow {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--color-signal);
+  text-transform: uppercase;
+}
+.post-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 86px;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.post-title.sm { font-size: 64px; }
+.post-lead {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: 30px;
+  line-height: 1.45;
+  color: var(--color-ink);
+  max-width: 80%;
+}
+
+/* подвал */
+.post-foot {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--color-ink-soft);
+  letter-spacing: 0.04em;
+}
+
+/* для постов спан больших сфер */
+.post-bg-sphere-big {
+  width: 700px; height: 700px;
+  position: absolute; right: -200px; bottom: -200px;
+  z-index: 0;
+}
+.post-bg-sphere-mid {
+  width: 380px; height: 380px;
+  position: absolute; left: -120px; top: -100px;
+  z-index: 0;
+}
+
+/* варианты раскладки */
+.layout-rule .post-body { justify-content: flex-start; padding-top: 60px; gap: 40px; }
+.layout-quote .post-body { justify-content: center; }
+.layout-list .post-body { justify-content: flex-start; padding-top: 30px; gap: 26px; }
+
+/* список с большими цифрами */
+.big-list { display: flex; flex-direction: column; gap: 22px; }
+.big-list-row {
+  display: grid; grid-template-columns: 88px 1fr; gap: 24px;
+  align-items: baseline;
+}
+.big-list-num {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 64px;
+  color: var(--color-rule);
+  line-height: 1;
+}
+.big-list-row.malachite .big-list-num { color: var(--color-malachite); }
+.big-list-row.lavender  .big-list-num { color: var(--color-lavender); }
+.big-list-row.sky       .big-list-num { color: var(--color-sky); }
+.big-list-text {
+  font-family: var(--font-body);
+  font-weight: var(--weight-medium);
+  font-size: 32px;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+
+/* большая цитата */
+.quote-text {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 72px;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+.quote-mark {
+  font-family: var(--font-display);
+  font-size: 220px;
+  color: var(--color-signal);
+  line-height: 0.6;
+  margin-bottom: 16px;
+  display: block;
+}
+
+/* подпись варианта (только на экране) */
+.label {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  letter-spacing: 0.04em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+.wrap { display: flex; flex-direction: column; align-items: center; }
+</style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ── A · TITLE 1080×1350 ─────────────── -->
+  <div class="wrap">
+    <div class="post tall layout-quote">
+      <div class="ds-sphere malachite post-bg-sphere-big"></div>
+      <div class="post-inner">
+        <div class="post-head">
+          <span><span class="brand-dot"></span>Гайд · 0X</span>
+          
+        </div>
+        <div class="post-body">
+          <div class="post-eyebrow">ВЫПУСК 0X</div>
+          <h1 class="post-title">Заголовок,<br>который интригует</h1>
+          <p class="post-lead">Подзаголовок на одну строку, который раскрывает суть.</p>
+        </div>
+        <div class="post-foot">
+          <span>4 страницы · 6 минут</span>
+          <span>2025</span>
+        </div>
+      </div>
+    </div>
+    <div class="label">A · Обложка · 1080×1350</div>
+  </div>
+
+  <!-- ── B · LIST 1080×1350 ──────────────── -->
+  <div class="wrap">
+    <div class="post tall layout-list">
+      <div class="ds-sphere lavender post-bg-sphere-mid"></div>
+      <div class="post-inner">
+        <div class="post-head">
+          <span><span class="brand-dot"></span>Гайд · 0X</span>
+          
+        </div>
+        <div class="post-body">
+          <div class="post-eyebrow">ПРАВИЛА</div>
+          <h2 class="post-title sm">4 правила,<br>которые меняют всё</h2>
+
+          <div class="big-list">
+            <div class="big-list-row malachite">
+              <div class="big-list-num">01</div>
+              <div class="big-list-text">Заголовок первого правила.</div>
+            </div>
+            <div class="big-list-row lavender">
+              <div class="big-list-num">02</div>
+              <div class="big-list-text">Заголовок второго правила.</div>
+            </div>
+            <div class="big-list-row sky">
+              <div class="big-list-num">03</div>
+              <div class="big-list-text">Заголовок третьего правила.</div>
+            </div>
+            <div class="big-list-row malachite">
+              <div class="big-list-num">04</div>
+              <div class="big-list-text">Заголовок четвёртого правила.</div>
+            </div>
+          </div>
+        </div>
+        <div class="post-foot">
+          <span>Разбор внутри</span>
+          <span>↓ свайп</span>
+        </div>
+      </div>
+    </div>
+    <div class="label">B · Список · 1080×1350</div>
+  </div>
+
+  <!-- ── C · QUOTE 1080×1080 ─────────────── -->
+  <div class="wrap">
+    <div class="post square layout-quote">
+      <div class="ds-sphere sky post-bg-sphere-big" style="right:-300px;bottom:-300px;width:800px;height:800px;"></div>
+      <div class="post-inner">
+        <div class="post-head">
+          <span><span class="brand-dot"></span>Цитата</span>
+          
+        </div>
+        <div class="post-body">
+          <span class="quote-mark">«</span>
+          <div class="quote-text">Короткая мысль на 2–3 строки, которая работает сама по себе.</div>
+        </div>
+        <div class="post-foot">
+          <span>— автор / источник</span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="label">C · Цитата · 1080×1080</div>
+  </div>
+
+</div>
+
+</body>
+</html>

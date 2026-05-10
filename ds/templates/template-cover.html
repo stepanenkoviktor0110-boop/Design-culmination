@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Template · Cover (A4)</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #EFECE6;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; padding: 32px 0;
+}
+
+.page {
+  width: var(--page-w);
+  height: var(--page-h);
+  background: var(--color-paper);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.08);
+}
+
+/* sphere positions */
+.cover-sphere-1 {
+  width: 130mm; height: 130mm;
+  right: -50mm; top: -40mm;
+}
+.cover-sphere-2 {
+  width: 90mm; height: 90mm;
+  left: -45mm; bottom: -55mm;
+}
+
+.cover-content {
+  position: relative; z-index: 1;
+  height: 100%;
+  padding: 28mm 22mm;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+}
+.cover-top { display: flex; justify-content: space-between; align-items: center; }
+.cover-brand {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.cover-brand-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--color-signal);
+  display: inline-block;
+}
+.cover-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 38pt;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1.05;
+  max-width: 70%;
+}
+.cover-eyebrow { margin-bottom: 6mm; }
+.cover-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  color: var(--color-ink);
+  letter-spacing: 0.04em;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff; padding: 0; gap: 0; }
+  .label { display: none; }
+  .page {
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ COVER A · малахит + лаванда ══ -->
+<div class="page">
+  <div class="ds-sphere malachite cover-sphere-1"></div>
+  <div class="ds-sphere lavender cover-sphere-2"></div>
+  <div class="cover-content">
+    <div class="cover-top">
+      <div class="cover-brand"><span class="cover-brand-dot"></span>Гайд · 0X</div>
+    </div>
+    <div>
+      <div class="ds-eyebrow cover-eyebrow">ВЫПУСК 0X</div>
+      <h1 class="cover-title">Заголовок гайда —<br>в две-три строки</h1>
+    </div>
+    <div class="cover-bottom">
+      <span>4 страницы · ~6 минут</span>
+      <span>2025</span>
+    </div>
+  </div>
+</div>
+<div class="label">A · малахит + лаванда</div>
+
+<!-- ══ COVER B · небо + малахит ══ -->
+<div class="page">
+  <div class="ds-sphere sky cover-sphere-1"></div>
+  <div class="ds-sphere malachite cover-sphere-2"></div>
+  <div class="cover-content">
+    <div class="cover-top">
+      <div class="cover-brand"><span class="cover-brand-dot"></span>Гайд · 0X</div>
+    </div>
+    <div>
+      <div class="ds-eyebrow cover-eyebrow">ВЫПУСК 0X</div>
+      <h1 class="cover-title">Альтернативный<br>вариант обложки</h1>
+    </div>
+    <div class="cover-bottom">
+      <span>4 страницы · ~6 минут</span>
+      <span>2025</span>
+    </div>
+  </div>
+</div>
+<div class="label">B · небо + малахит</div>
+
+<!-- ══ COVER C · одна большая лаванда ══ -->
+<div class="page">
+  <div class="ds-sphere lavender" style="width:170mm;height:170mm;right:-70mm;bottom:-70mm;"></div>
+  <div class="cover-content">
+    <div class="cover-top">
+      <div class="cover-brand"><span class="cover-brand-dot"></span>Гайд · 0X</div>
+    </div>
+    <div>
+      <div class="ds-eyebrow cover-eyebrow">ВЫПУСК 0X</div>
+      <h1 class="cover-title">Минималистичная<br>обложка</h1>
+    </div>
+    <div class="cover-bottom">
+      <span>4 страницы · ~6 минут</span>
+      <span>2025</span>
+    </div>
+  </div>
+</div>
+<div class="label">C · одна большая сфера</div>
+
+</body>
+</html>

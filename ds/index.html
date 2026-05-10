@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Design System · Index</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #EFECE6;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 56px 40px 80px;
+}
+.shell { max-width: 1100px; margin: 0 auto; }
+
+.head { margin-bottom: 56px; padding-bottom: 32px; border-bottom: var(--border-rule); }
+.head .eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--color-signal); margin-bottom: 8px;
+}
+.head h1 {
+  font-family: var(--font-display); font-size: 38px; font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px;
+}
+.head p { color: var(--color-ink-soft); max-width: 640px; }
+
+.phase {
+  border: var(--border-rule); border-radius: 6px; background: #fff;
+  padding: 22px 26px; margin-bottom: 14px;
+  display: grid; grid-template-columns: 60px 1fr 100px;
+  gap: 24px; align-items: center;
+}
+.phase-num {
+  font-family: var(--font-display); font-size: 28px; font-weight: 700;
+  color: var(--color-rule); line-height: 1;
+}
+.phase.done .phase-num { color: var(--color-malachite); }
+.phase-body h3 {
+  font-family: var(--font-body); font-weight: 500; font-size: 15px;
+  margin-bottom: 4px;
+}
+.phase-body p { font-size: 13px; color: var(--color-ink-soft); margin: 0; }
+.phase-status {
+  font-family: var(--font-mono); font-size: 11px;
+  text-align: right; color: var(--color-ink-soft);
+  letter-spacing: 0.02em;
+}
+.phase.done .phase-status { color: var(--color-malachite-deep); }
+
+.section { margin-top: 48px; }
+.section-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+  color: var(--color-signal); margin-bottom: 6px;
+}
+.section h2 {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 16px;
+  border-bottom: var(--border-rule); padding-bottom: 12px;
+}
+
+.file-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+.file {
+  background: #fff; border: var(--border-rule); border-radius: 6px;
+  padding: 16px 18px; text-decoration: none; color: var(--color-ink);
+  display: block; transition: border-color 0.15s;
+}
+.file:hover { border-color: var(--color-ink); }
+.file .name {
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--color-ink); margin-bottom: 4px;
+}
+.file .desc { font-size: 12px; color: var(--color-ink-soft); }
+
+.token-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-top: 12px;
+}
+.swatch {
+  background: #fff; border: var(--border-rule); border-radius: 6px;
+  overflow: hidden;
+}
+.swatch-color { height: 64px; }
+.swatch-meta { padding: 10px 12px; }
+.swatch-name { font-weight: 500; font-size: 12px; margin-bottom: 2px; }
+.swatch-hex {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--color-ink-soft); letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="head">
+    <div class="eyebrow">Design system · v0.1</div>
+    <h1>Дизайн-система</h1>
+    <p>Файлы и шаблоны для оформления гайдов, постов и обложек в едином визуальном языке. Подключай <code>tokens.css</code> в любой новый файл — и используй только переменные.</p>
+  </div>
+
+  <!-- ── PHASES ─────────────────────────────── -->
+  <div class="section-label">Прогресс сборки</div>
+  <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; border-bottom: var(--border-rule); padding-bottom: 12px;">Фазы</h2>
+
+  <div class="phase done">
+    <div class="phase-num">01</div>
+    <div class="phase-body">
+      <h3>Токены</h3>
+      <p>tokens.css + tokens.json — все переменные системы</p>
+    </div>
+    <div class="phase-status">готово</div>
+  </div>
+
+  <div class="phase done">
+    <div class="phase-num">02</div>
+    <div class="phase-body">
+      <h3>Компоненты</h3>
+      <p>components.css + library.html — все блоки в одном каталоге</p>
+    </div>
+    <div class="phase-status">готово</div>
+  </div>
+
+  <div class="phase done">
+    <div class="phase-num">03</div>
+    <div class="phase-body">
+      <h3>Шаблоны</h3>
+      <p>Гайд (4 страницы), пост, обложка</p>
+    </div>
+    <div class="phase-status">готово</div>
+  </div>
+
+  <div class="phase done">
+    <div class="phase-num">04</div>
+    <div class="phase-body">
+      <h3>Ассеты</h3>
+      <p>SVG-сферы 3 цветов</p>
+    </div>
+    <div class="phase-status">готово</div>
+  </div>
+
+  <div class="phase done">
+    <div class="phase-num">05</div>
+    <div class="phase-body">
+      <h3>Чек-листы</h3>
+      <p>Перед публикацией PDF и постов</p>
+    </div>
+    <div class="phase-status">готово</div>
+  </div>
+
+  <div class="phase done">
+    <div class="phase-num">06</div>
+    <div class="phase-body">
+      <h3>README</h3>
+      <p>Полное оглавление и инструкция</p>
+    </div>
+    <div class="phase-status">готово</div>
+  </div>
+
+  <!-- ── PHASE 1 OUTPUT ─────────────────────── -->
+  <div class="section">
+    <div class="section-label">Фаза 01 · готово</div>
+    <h2>Токены</h2>
+
+    <div class="file-grid">
+      <a class="file" href="tokens.css">
+        <div class="name">ds/tokens.css</div>
+        <div class="desc">CSS-переменные. Подключай первым.</div>
+      </a>
+      <a class="file" href="tokens.json">
+        <div class="name">ds/tokens.json</div>
+        <div class="desc">Те же значения для Figma и сборщиков.</div>
+      </a>
+    </div>
+
+    <div class="section-label" style="margin-top: 48px;">Фаза 02 · готово</div>
+    <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px;">Компоненты</h2>
+
+    <div class="file-grid">
+      <a class="file" href="components.css">
+        <div class="name">ds/components.css</div>
+        <div class="desc">Все стили компонентов. Подключай после tokens.css.</div>
+      </a>
+      <a class="file" href="library.html">
+        <div class="name">ds/library.html</div>
+        <div class="desc">Каталог всех блоков с превью и копируемыми сниппетами.</div>
+      </a>
+    </div>
+
+    <h3 style="margin-top: 32px; font-family: var(--font-body); font-weight: 500; font-size: 14px; margin-bottom: 8px;">Цвета</h3>
+    <div class="token-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#FAFAFA;border-bottom:1px solid #E0E0E0;"></div>
+        <div class="swatch-meta"><div class="swatch-name">paper</div><div class="swatch-hex">#FAFAFA</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1A1A1A;"></div>
+        <div class="swatch-meta"><div class="swatch-name">ink</div><div class="swatch-hex">#1A1A1A</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#9DD4B9;"></div>
+        <div class="swatch-meta"><div class="swatch-name">malachite</div><div class="swatch-hex">#9DD4B9</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C5B4E8;"></div>
+        <div class="swatch-meta"><div class="swatch-name">lavender</div><div class="swatch-hex">#C5B4E8</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#A3C8E8;"></div>
+        <div class="swatch-meta"><div class="swatch-name">sky</div><div class="swatch-hex">#A3C8E8</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E63946;"></div>
+        <div class="swatch-meta"><div class="swatch-name">signal</div><div class="swatch-hex">#E63946</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#6B6B6B;"></div>
+        <div class="swatch-meta"><div class="swatch-name">ink-soft</div><div class="swatch-hex">#6B6B6B</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E0E0E0;"></div>
+        <div class="swatch-meta"><div class="swatch-name">rule</div><div class="swatch-hex">#E0E0E0</div></div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top: 48px;">Фаза 03 · готово</div>
+    <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px;">Шаблоны</h2>
+    <div class="file-grid">
+      <a class="file" href="templates/template-guide.html">
+        <div class="name">templates/template-guide.html</div>
+        <div class="desc">4-страничный A4-гайд: обложка + 3 контентные.</div>
+      </a>
+      <a class="file" href="templates/template-post.html">
+        <div class="name">templates/template-post.html</div>
+        <div class="desc">Посты 1080×1350 и 1080×1080: обложка, список, цитата.</div>
+      </a>
+      <a class="file" href="templates/template-cover.html">
+        <div class="name">templates/template-cover.html</div>
+        <div class="desc">3 варианта одиночной обложки A4.</div>
+      </a>
+    </div>
+
+    <div class="section-label" style="margin-top: 48px;">Фаза 04 · готово</div>
+    <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px;">Ассеты</h2>
+    <div class="file-grid">
+      <a class="file" href="assets/spheres.html">
+        <div class="name">assets/spheres.html</div>
+        <div class="desc">Каталог SVG-сфер. 3 цвета.</div>
+      </a>
+      <a class="file" href="assets/sphere-malachite.svg">
+        <div class="name">assets/sphere-*.svg</div>
+        <div class="desc">3 готовых вектора: malachite, lavender, sky.</div>
+      </a>
+    </div>
+
+    <div class="section-label" style="margin-top: 48px;">Фаза 05 · готово</div>
+    <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px;">Чек-листы</h2>
+    <div class="file-grid">
+      <a class="file" href="checklists/checklist-pdf.html">
+        <div class="name">checklists/checklist-pdf.html</div>
+        <div class="desc">Что проверить перед сохранением гайда в PDF.</div>
+      </a>
+      <a class="file" href="checklists/checklist-post.html">
+        <div class="name">checklists/checklist-post.html</div>
+        <div class="desc">Что проверить перед публикацией поста.</div>
+      </a>
+    </div>
+
+    <div class="section-label" style="margin-top: 48px;">Фаза 06 · готово</div>
+    <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px;">README</h2>
+    <div class="file-grid">
+      <a class="file" href="README.html">
+        <div class="name">ds/README.html</div>
+        <div class="desc">Полное оглавление, инструкция по использованию.</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

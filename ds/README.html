@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Design System · README</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #EFECE6; font-family: var(--font-body); color: var(--color-ink); font-size: 14px; line-height: 1.6; padding: 56px 40px 80px; }
+.shell { max-width: 860px; margin: 0 auto; }
+.crumb { font-family: var(--font-mono); font-size: 11px; color: var(--color-ink-soft); margin-bottom: 24px; }
+.crumb a { color: var(--color-ink-soft); text-decoration: none; border-bottom: 1px solid var(--color-rule); }
+.head { margin-bottom: 56px; padding-bottom: 32px; border-bottom: var(--border-rule); }
+.head .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-signal); margin-bottom: 8px; }
+.head h1 { font-family: var(--font-display); font-size: 38px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+.head p { color: var(--color-ink-soft); }
+
+section { margin-bottom: 48px; }
+.s-label { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-signal); margin-bottom: 6px; }
+h2 { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; border-bottom: var(--border-rule); padding-bottom: 12px; }
+h3 { font-weight: 500; font-size: 15px; margin: 20px 0 6px; }
+p { color: var(--color-ink-soft); margin-bottom: 12px; }
+p strong { color: var(--color-ink); font-weight: 500; }
+ul { color: var(--color-ink-soft); padding-left: 22px; margin-bottom: 12px; }
+ul li { margin-bottom: 4px; }
+code, .tree {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: #F0F0F0;
+  padding: 1px 6px;
+  border-radius: 2px;
+  color: var(--color-ink);
+}
+.tree {
+  display: block; padding: 16px 20px; border-radius: 6px;
+  white-space: pre; line-height: 1.7; overflow-x: auto;
+}
+
+.start {
+  background: #fff; border: var(--border-rule); border-radius: 6px;
+  padding: 20px 24px; margin-bottom: 16px;
+}
+.start h3 { margin-top: 0; }
+.start pre {
+  background: #F0F0F0; padding: 12px 16px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 12px; line-height: 1.6;
+  white-space: pre-wrap; margin-top: 8px;
+}
+
+.flow {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-top: 12px;
+}
+.flow-step {
+  background: #fff; border: var(--border-rule); border-radius: 6px;
+  padding: 16px 18px;
+}
+.flow-num {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  color: var(--color-malachite); line-height: 1; margin-bottom: 6px;
+}
+.flow-step:nth-child(2) .flow-num { color: var(--color-lavender); }
+.flow-step:nth-child(3) .flow-num { color: var(--color-sky); }
+.flow-step:nth-child(4) .flow-num { color: var(--color-signal); }
+.flow-step h4 { font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+.flow-step p { font-size: 12px; margin: 0; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: var(--border-rule); font-size: 13px; }
+th { font-weight: 500; color: var(--color-ink); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+td { color: var(--color-ink-soft); }
+td:first-child { font-family: var(--font-mono); font-size: 12px; color: var(--color-ink); }
+td:first-child a { color: var(--color-ink); text-decoration: none; border-bottom: 1px solid var(--color-rule); }
+td:first-child a:hover { border-bottom-color: var(--color-ink); }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="crumb"><a href="index.html">← ds/index.html</a></div>
+
+  <div class="head">
+    <div class="eyebrow">README · v0.1</div>
+    <h1>Дизайн-система</h1>
+    <p>Папка <code>ds/</code> содержит всё для оформления гайдов, постов и обложек в едином визуальном языке. Этот файл — оглавление и инструкция.</p>
+  </div>
+
+  <!-- ── 01 STRUCTURE ───────────────────────── -->
+  <section>
+    <div class="s-label">01</div>
+    <h2>Структура</h2>
+    <code class="tree">ds/
+├── index.html              ← главная страница системы
+├── README.html             ← этот файл
+│
+├── tokens.css              ← CSS-переменные (источник правды)
+├── tokens.json             ← те же значения для Figma и сборщиков
+├── components.css          ← все стили компонентов
+├── library.html            ← каталог компонентов с превью
+│
+├── templates/
+│   ├── template-guide.html ← 4-страничный A4-гайд
+│   ├── template-post.html  ← посты 1080×1350 и 1080×1080
+│   └── template-cover.html ← одиночная обложка A4
+│
+├── assets/
+│   ├── spheres.html        ← каталог сфер
+│   ├── sphere-malachite.svg
+│   ├── sphere-lavender.svg
+│   └── sphere-sky.svg
+│
+└── checklists/
+    ├── checklist-pdf.html  ← перед сохранением гайда
+    └── checklist-post.html ← перед публикацией поста</code>
+  </section>
+
+  <!-- ── 02 QUICKSTART ──────────────────────── -->
+  <section>
+    <div class="s-label">02</div>
+    <h2>Быстрый старт</h2>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <h4>Скопируй шаблон</h4>
+        <p>Из <code>templates/</code> возьми тот, что подходит — гайд, пост или обложку.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <h4>Подставь свой текст</h4>
+        <p>Замени плейсхолдеры. Сохрани цветовую логику.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <h4>Проверь по чек-листу</h4>
+        <p>Открой нужный <code>checklists/</code> — пройди по пунктам.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <h4>Сохрани результат</h4>
+        <p>PDF — через диалог печати с фонами. Пост — скриншот канваса.</p>
+      </div>
+    </div>
+
+    <div class="start" style="margin-top: 24px;">
+      <h3>Подключение в новый файл</h3>
+      <pre>&lt;link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet"&gt;
+&lt;link rel="stylesheet" href="ds/tokens.css"&gt;
+&lt;link rel="stylesheet" href="ds/components.css"&gt;</pre>
+    </div>
+  </section>
+
+  <!-- ── 03 INDEX ────────────────────────────── -->
+  <section>
+    <div class="s-label">03</div>
+    <h2>Файлы и что в них</h2>
+
+    <table>
+      <thead><tr><th>Файл</th><th>Что внутри</th></tr></thead>
+      <tbody>
+        <tr><td><a href="tokens.css">tokens.css</a></td><td>Все CSS-переменные системы. Цвета, шрифты, отступы, размеры страниц.</td></tr>
+        <tr><td><a href="tokens.json">tokens.json</a></td><td>Те же значения в JSON. Для Figma-плагинов или сборщиков.</td></tr>
+        <tr><td><a href="components.css">components.css</a></td><td>Стили всех компонентов с префиксом <code>.ds-</code>.</td></tr>
+        <tr><td><a href="library.html">library.html</a></td><td>Живой каталог. Каждый блок — превью, класс, копируемый сниппет.</td></tr>
+        <tr><td><a href="templates/template-guide.html">templates/template-guide.html</a></td><td>4-страничный шаблон A4-гайда: обложка + 3 контентные.</td></tr>
+        <tr><td><a href="templates/template-post.html">templates/template-post.html</a></td><td>3 раскладки постов: обложка, список правил, цитата.</td></tr>
+        <tr><td><a href="templates/template-cover.html">templates/template-cover.html</a></td><td>3 варианта одиночной обложки.</td></tr>
+        <tr><td><a href="assets/spheres.html">assets/spheres.html</a></td><td>Каталог SVG-сфер с правилами размещения.</td></tr>
+        <tr><td><a href="checklists/checklist-pdf.html">checklists/checklist-pdf.html</a></td><td>Чек-лист перед сохранением гайда в PDF.</td></tr>
+        <tr><td><a href="checklists/checklist-post.html">checklists/checklist-post.html</a></td><td>Чек-лист перед публикацией поста.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── 04 PRINCIPLES ──────────────────────── -->
+  <section>
+    <div class="s-label">04</div>
+    <h2>Принципы</h2>
+    <ul>
+      <li><strong>Тепло с характером.</strong> Пастельные насыщенные цвета + одна резкая красная точка.</li>
+      <li><strong>Асимметрия.</strong> Текст — 62% ширины, остальное — воздух или большая форма.</li>
+      <li><strong>Открытая композиция.</strong> Сферы выходят за край листа.</li>
+      <li><strong>Минимум пастелей в кадре.</strong> Не больше двух на одну страницу.</li>
+      <li><strong>Sentence case.</strong> Никаких ЗАГЛАВНЫХ или TitleCase.</li>
+      <li><strong>Декоративные сферы — объёмные.</strong> Сферы с цифрами — плоские.</li>
+    </ul>
+  </section>
+
+  <!-- ── 05 CHANGELOG ───────────────────────── -->
+  <section>
+    <div class="s-label">05</div>
+    <h2>Версии</h2>
+
+    <h3>v0.1 · текущая</h3>
+    <ul>
+      <li>Цветовая палитра (бумага, чернила, 3 пастели, сигнал)</li>
+      <li>Типографика: Unbounded · Inter · Courier Prime</li>
+      <li>Spacing-шкала: модуль 8px, ряд Фибоначчи</li>
+      <li>10 компонентов: eyebrow, heading, page-header, rule-card, step, callout, code, pill, example, final, checklist</li>
+      <li>2 типа сфер: декоративные (объём) и нумераторы (плоские)</li>
+      <li>Шаблоны: гайд (4 страницы), пост (3 раскладки), обложка (3 варианта)</li>
+      <li>Чек-листы: PDF и пост</li>
+    </ul>
+
+    <h3>Что хочется добавить</h3>
+    <ul>
+      <li>Локальные шрифты в <code>fonts/</code> (offline)</li>
+      <li>Логотип серии в нескольких форматах</li>
+      <li>Папка <code>examples/</code> с реальными гайдами как референсами</li>
+      <li>Темная схема (если понадобится)</li>
+      <li>Тестовые шаблоны под Stories (1080×1920)</li>
+    </ul>
+  </section>
+
+</div>
+
+</body>
+</html>

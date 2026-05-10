@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Checklist · PDF</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #EFECE6;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  padding: 32px 0;
+  display: flex; flex-direction: column; align-items: center;
+  font-size: 14px;
+}
+.page {
+  width: var(--page-w); height: var(--page-h);
+  background: var(--color-paper);
+  position: relative; overflow: hidden;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.08);
+}
+.inner { position: relative; z-index: 1; padding: 16mm 18mm; height: 100%; display: flex; flex-direction: column; }
+
+.cl-head { margin-bottom: 8mm; padding-bottom: 4mm; border-bottom: var(--border-rule); }
+.cl-eyebrow { font-size: 9pt; letter-spacing: 0.04em; color: var(--color-signal); font-weight: 500; margin-bottom: 3mm; text-transform: uppercase; }
+.cl-title { font-family: var(--font-display); font-size: 24pt; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 3mm; }
+.cl-sub { font-size: 11pt; color: var(--color-ink-soft); }
+
+.section { margin-top: 6mm; }
+.section h3 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 11pt;
+  margin-bottom: 3mm;
+  color: var(--color-ink);
+}
+.section .ds-checklist { margin-bottom: 4mm; }
+.ds-check-row span { font-size: 10.5pt; line-height: 1.45; }
+
+.section-label-row {
+  display: flex; align-items: baseline; gap: 6mm;
+  margin-bottom: 3mm;
+}
+.section-num {
+  font-family: var(--font-display);
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--color-malachite);
+  line-height: 1;
+}
+.section.lav .section-num { color: var(--color-lavender); }
+.section.sky .section-num { color: var(--color-sky); }
+.section-name {
+  font-weight: 500;
+  font-size: 11pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink);
+}
+
+@media print {
+  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  @page { size: A4; margin: 0; }
+  html, body { background: #fff; padding: 0; }
+  .page { box-shadow: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="ds-sphere malachite" style="width:60mm;height:60mm;right:-20mm;bottom:-22mm;"></div>
+  <div class="inner">
+    <div class="cl-head">
+      <div class="cl-eyebrow">ЧЕК-ЛИСТ</div>
+      <h1 class="cl-title">Перед сохранением гайда в PDF</h1>
+      <p class="cl-sub">Проверь по списку — это занимает 3 минуты и спасает от перепечатки.</p>
+    </div>
+
+    <div class="section">
+      <div class="section-label-row"><div class="section-num">01</div><div class="section-name">Содержание</div></div>
+      <div class="ds-checklist">
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Все факты и цифры сверены с источником.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Заголовки в sentence case, без ЗАГЛАВНЫХ.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Лидерский абзац на 2–3 строки, не больше.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Каждое правило — одно действие, не два.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Final-блок повторяет главную мысль.</span></div>
+      </div>
+    </div>
+
+    <div class="section lav">
+      <div class="section-label-row"><div class="section-num">02</div><div class="section-name">Визуал</div></div>
+      <div class="ds-checklist">
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>На каждой странице есть одна фоновая сфера.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Цвета сфер чередуются: малахит → лаванда → небо.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Размеры сфер чередуются: большая → средняя.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Сферы не пересекаются с текстом (z-index: 0).</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Красный — только в одной точке на страницу.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>В одном кадре максимум 2 пастели.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Текст только чернилами, не на пастельной заливке.</span></div>
+      </div>
+    </div>
+
+    <div class="section sky">
+      <div class="section-label-row"><div class="section-num">03</div><div class="section-name">Техника печати</div></div>
+      <div class="ds-checklist">
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span><code>print-color-adjust: exact</code> прописан — фоны печатаются.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>В диалоге печати включён «Background graphics».</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Каждая страница 210×297mm с overflow: hidden.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Поля заданы padding-ом внутри .page, не через @page margin.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Шрифты загружены до открытия диалога печати.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Размер шрифта в теле — не меньше 9pt.</span></div>
+        <div class="ds-check-row"><div class="ds-checkbox"></div><span>Нет лишней пустой страницы в конце.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

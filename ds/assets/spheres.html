@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Design System · Spheres</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #EFECE6; font-family: var(--font-body); color: var(--color-ink); padding: 56px 40px; font-size: 14px; }
+.shell { max-width: 1100px; margin: 0 auto; }
+.crumb { font-family: var(--font-mono); font-size: 11px; color: var(--color-ink-soft); margin-bottom: 24px; }
+.crumb a { color: var(--color-ink-soft); text-decoration: none; border-bottom: 1px solid var(--color-rule); }
+.head { margin-bottom: 48px; padding-bottom: 32px; border-bottom: var(--border-rule); }
+.head .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-signal); margin-bottom: 8px; }
+.head h1 { font-family: var(--font-display); font-size: 38px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+.head p { color: var(--color-ink-soft); max-width: 640px; }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+.card { background: #fff; border: var(--border-rule); border-radius: 6px; overflow: hidden; }
+.card-canvas {
+  background: var(--color-paper);
+  height: 260px;
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: var(--border-rule);
+}
+.card-canvas img { width: 70%; height: 70%; object-fit: contain; }
+.card-meta { padding: 14px 18px; }
+.card-name { font-weight: 500; font-size: 13px; margin-bottom: 4px; }
+.card-path { font-family: var(--font-mono); font-size: 11px; color: var(--color-ink-soft); }
+
+.intro {
+  background: #fff; border: var(--border-rule); border-radius: 6px;
+  padding: 22px 26px; margin-bottom: 40px;
+}
+.intro h3 { font-weight: 500; font-size: 14px; margin-bottom: 8px; }
+.intro pre {
+  background: #F0F0F0; padding: 10px 14px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.6;
+  white-space: pre-wrap; margin-top: 8px;
+}
+.intro p { color: var(--color-ink-soft); font-size: 13px; }
+
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-signal); margin-bottom: 6px; }
+.section-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px; }
+
+.css-vs-svg {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 40px;
+}
+.option {
+  background: #fff; border: var(--border-rule); border-radius: 6px; padding: 18px 22px;
+}
+.option h4 { font-weight: 500; font-size: 14px; margin-bottom: 6px; }
+.option p { font-size: 13px; color: var(--color-ink-soft); margin-bottom: 10px; }
+.option pre {
+  background: #F0F0F0; padding: 10px 14px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.6;
+  white-space: pre-wrap;
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="crumb"><a href="../index.html">← ds/index.html</a></div>
+
+  <div class="head">
+    <div class="eyebrow">Design system · Spheres</div>
+    <h1>Сферы</h1>
+    <p>Декоративные объёмные формы — фирменный знак системы. Доступны как CSS-классы (через components.css) и как готовые SVG-векторы.</p>
+  </div>
+
+  <div class="section-label">01</div>
+  <h2 class="section-title">SVG-векторы</h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-canvas"><img src="sphere-malachite.svg" alt="Malachite sphere"></div>
+      <div class="card-meta">
+        <div class="card-name">Malachite</div>
+        <div class="card-path">assets/sphere-malachite.svg</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-canvas"><img src="sphere-lavender.svg" alt="Lavender sphere"></div>
+      <div class="card-meta">
+        <div class="card-name">Lavender</div>
+        <div class="card-path">assets/sphere-lavender.svg</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-canvas"><img src="sphere-sky.svg" alt="Sky sphere"></div>
+      <div class="card-meta">
+        <div class="card-name">Sky</div>
+        <div class="card-path">assets/sphere-sky.svg</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro">
+    <h3>Использование SVG</h3>
+    <p>Удобно, когда нужно вставить сферу в готовый макет (Figma, Canva, Photoshop) или в письмо без CSS.</p>
+    <pre>&lt;img src="ds/assets/sphere-malachite.svg" width="400"&gt;</pre>
+  </div>
+
+  <div class="section-label">02</div>
+  <h2 class="section-title">CSS vs SVG — что выбрать</h2>
+
+  <div class="css-vs-svg">
+    <div class="option">
+      <h4>CSS-класс <code>.ds-sphere</code></h4>
+      <p>Внутри HTML-документа: гайды, шаблоны, страницы. Размер задаёшь стилем — без потери качества на любом масштабе.</p>
+<pre>&lt;div class="ds-sphere malachite"
+  style="width:78mm;height:78mm;
+         right:-22mm;bottom:-30mm;"&gt;&lt;/div&gt;</pre>
+    </div>
+    <div class="option">
+      <h4>SVG-файл</h4>
+      <p>Когда нужно вставить вне HTML — в Figma, презентацию, e-mail. Можно открыть в редакторе и подкрутить цвета.</p>
+<pre>&lt;img src="sphere-malachite.svg"
+     width="400" height="400"&gt;</pre>
+    </div>
+  </div>
+
+  <div class="section-label">03</div>
+  <h2 class="section-title">Правила размещения</h2>
+
+  <div class="intro">
+    <p style="color: var(--color-ink); font-size: 13px;">
+    • Декоративные сферы — всегда объёмные.<br>
+    • Сферы с цифрами или текстом внутри — плоские, без градиента.<br>
+    • На каждой контентной странице — одна фоновая сфера внизу.<br>
+    • Цвета чередуются по страницам: малахит → лаванда → небо.<br>
+    • Размеры чередуются: большая (≈80mm) → средняя (≈50mm).<br>
+    • Сфера частично выходит за край страницы.<br>
+    • z-index: 0 — всегда под контентом, не пересекается с текстом.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

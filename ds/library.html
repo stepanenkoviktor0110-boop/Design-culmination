@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Design System · Components Library</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=Inter:wght@400;500&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #EFECE6;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 56px 40px 80px;
+}
+.shell { max-width: 1100px; margin: 0 auto; }
+.head { margin-bottom: 56px; padding-bottom: 32px; border-bottom: var(--border-rule); }
+.head .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-signal); margin-bottom: 8px; }
+.head h1 { font-family: var(--font-display); font-size: 38px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+.head p { color: var(--color-ink-soft); max-width: 640px; }
+
+.crumb {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--color-ink-soft); margin-bottom: 24px;
+}
+.crumb a { color: var(--color-ink-soft); text-decoration: none; border-bottom: 1px solid var(--color-rule); }
+.crumb a:hover { color: var(--color-ink); border-bottom-color: var(--color-ink); }
+
+.comp { margin-bottom: 48px; }
+.comp-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.comp-name {
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.comp-class {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--color-ink-soft);
+}
+.comp-desc {
+  font-size: 13px; color: var(--color-ink-soft);
+  margin-bottom: 16px; max-width: 640px;
+}
+
+.split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  align-items: stretch;
+}
+.preview, .snippet {
+  border: var(--border-rule); border-radius: 6px;
+  background: #fff; overflow: hidden;
+}
+.preview-head, .snippet-head {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--color-ink-soft);
+  padding: 10px 14px; border-bottom: var(--border-rule);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.preview-body { padding: 24px; background: var(--color-paper); min-height: 100px; }
+.snippet pre {
+  margin: 0; padding: 14px 16px;
+  font-family: var(--font-mono); font-size: 11px;
+  line-height: 1.6; color: var(--color-ink);
+  background: #F7F7F7; overflow: auto;
+  white-space: pre-wrap; word-break: break-word;
+}
+.copy-btn {
+  background: none; border: 1px solid var(--color-rule);
+  padding: 2px 8px; font-family: var(--font-mono); font-size: 10px;
+  border-radius: 2px; cursor: pointer; color: var(--color-ink-soft);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.copy-btn:hover { color: var(--color-ink); border-color: var(--color-ink); }
+.copy-btn.copied { color: var(--color-malachite-deep); border-color: var(--color-malachite-deep); }
+
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.04em; color: var(--color-signal); margin-bottom: 6px; }
+.section-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 24px; border-bottom: var(--border-rule); padding-bottom: 12px; }
+
+.intro {
+  background: #fff; border: var(--border-rule); border-radius: 6px;
+  padding: 22px 26px; margin-bottom: 40px;
+}
+.intro h3 { font-family: var(--font-body); font-weight: 500; font-size: 14px; margin-bottom: 8px; }
+.intro pre {
+  background: #F0F0F0; padding: 10px 14px; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* sphere demo box */
+.sphere-stage {
+  position: relative; height: 200px;
+  background: var(--color-paper);
+  border: var(--border-rule); border-radius: 4px;
+  overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <div class="crumb"><a href="index.html">← ds/index.html</a></div>
+
+  <div class="head">
+    <div class="eyebrow">Design system · Library</div>
+    <h1>Компоненты</h1>
+    <p>Все блоки системы. Каждый — с превью, классом и готовым HTML-сниппетом. Кнопка «copy» копирует разметку в буфер.</p>
+  </div>
+
+  <div class="intro">
+    <h3>Подключение</h3>
+    <pre>&lt;link rel="stylesheet" href="ds/tokens.css"&gt;
+&lt;link rel="stylesheet" href="ds/components.css"&gt;</pre>
+  </div>
+
+  <!-- ── TYPE ─────────────────────────────────── -->
+  <div class="section-label">01</div>
+  <h2 class="section-title">Типографика</h2>
+
+  <div class="comp">
+    <div class="comp-head">
+      <div class="comp-name">Eyebrow</div>
+      <div class="comp-class">.ds-eyebrow</div>
+    </div>
+    <div class="comp-desc">Маленькая надпись красным над заголовком. Категория, раздел, статус.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body"><div class="ds-eyebrow">ВВЕДЕНИЕ</div></div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-eyebrow"&gt;ВВЕДЕНИЕ&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Heading 1</div><div class="comp-class">.ds-h1</div></div>
+    <div class="comp-desc">Главный заголовок страницы. Unbounded 700.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body"><div class="ds-h1">Как рисовать с ИИ</div></div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;h1 class="ds-h1"&gt;Как рисовать с ИИ&lt;/h1&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Heading 2</div><div class="comp-class">.ds-h2</div></div>
+    <div class="comp-desc">Заголовок раздела. Unbounded 700, чуть меньше H1.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body"><div class="ds-h2">4 правила, которые меняют всё</div></div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;h2 class="ds-h2"&gt;4 правила, которые меняют всё&lt;/h2&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Lead</div><div class="comp-class">.ds-lead</div></div>
+    <div class="comp-desc">Крупный лидерский абзац под заголовком. Inter 400, 13pt.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body"><p class="ds-lead">Нейросети не «рисуют» как художники.<br>Они угадывают, что может быть на картинке.</p></div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;p class="ds-lead"&gt;Нейросети не «рисуют» как художники.&lt;/p&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PAGE HEADER ──────────────────────── -->
+  <div class="section-label">02</div>
+  <h2 class="section-title">Структура страницы</h2>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Page Header</div><div class="comp-class">.ds-page-header</div></div>
+    <div class="comp-desc">Шапка контентной страницы PDF. Слева раздел, справа номер.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body"><div class="ds-page-header"><span>Как рисовать картинки с ИИ</span><span>02</span></div></div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-page-header"&gt;
+  &lt;span&gt;Как рисовать картинки с ИИ&lt;/span&gt;
+  &lt;span&gt;02&lt;/span&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RULE CARD ────────────────────────── -->
+  <div class="section-label">03</div>
+  <h2 class="section-title">Карточки и блоки</h2>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Rule Card</div><div class="comp-class">.ds-rule-card · .lavender · .sky</div></div>
+    <div class="comp-desc">Пронумерованная карточка с цветной полосой сверху. Чередовать цвета по парам.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="ds-rule-card"><div class="ds-rule-num">01</div><h4>Сначала опишите словами</h4><p>Нейросеть не умеет «перерисовать» загруженное фото.</p></div>
+          <div class="ds-rule-card lavender"><div class="ds-rule-num">02</div><h4>Один стиль на серию</h4><p>Один стилевой блок в каждом запросе — и серия выглядит цельной.</p></div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-rule-card"&gt;
+  &lt;div class="ds-rule-num"&gt;01&lt;/div&gt;
+  &lt;h4&gt;Сначала опишите словами&lt;/h4&gt;
+  &lt;p&gt;Нейросеть не умеет «перерисовать»…&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="ds-rule-card lavender"&gt;…&lt;/div&gt;
+&lt;div class="ds-rule-card sky"&gt;…&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Step</div><div class="comp-class">.ds-step</div></div>
+    <div class="comp-desc">Шаг с круглым нумератором. Чередовать цвета.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body" style="display:flex;flex-direction:column;gap:14px;">
+          <div class="ds-step"><div class="ds-step-num">1</div><div><h4>Загрузите образец</h4><p>Откройте генератор. Нажмите скрепку.</p></div></div>
+          <div class="ds-step"><div class="ds-step-num lavender">2</div><div><h4>Опишите словами</h4><p>Простыми фразами, без красивых оборотов.</p></div></div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-step"&gt;
+  &lt;div class="ds-step-num"&gt;1&lt;/div&gt;
+  &lt;div&gt;
+    &lt;h4&gt;Загрузите образец&lt;/h4&gt;
+    &lt;p&gt;Откройте генератор. Нажмите скрепку.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Callout</div><div class="comp-class">.ds-callout · .lavender · .sky</div></div>
+    <div class="comp-desc">Подсказка с цветным border-left и пастельной подложкой.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body" style="display:flex;flex-direction:column;gap:10px;">
+          <div class="ds-callout"><div class="ds-callout-label">Полезная привычка</div><p>Заведите личный «банк стилей».</p></div>
+          <div class="ds-callout lavender"><div class="ds-callout-label">Если не умеете описывать</div><p>Загрузите картинку и попросите описать.</p></div>
+          <div class="ds-callout sky"><div class="ds-callout-label">Технический момент</div><p>Проверьте формат файла перед загрузкой.</p></div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-callout"&gt;
+  &lt;div class="ds-callout-label"&gt;Полезная привычка&lt;/div&gt;
+  &lt;p&gt;Заведите личный «банк стилей».&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Code Block</div><div class="comp-class">.ds-code</div></div>
+    <div class="comp-desc">Цитата команды или промпта моноширинным.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body"><div class="ds-code">«Опиши эту картинку простыми словами: что где стоит, какого цвета, какой свет»</div></div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-code"&gt;«Опиши эту картинку…»&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Pill</div><div class="comp-class">.ds-pill · .malachite · .lavender</div></div>
+    <div class="comp-desc">Цветной тег. По умолчанию — небо.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body" style="display:flex;flex-direction:column;gap:8px;">
+          <div><span class="ds-pill">Стиль</span> «Нарисуй в плоском стиле»</div>
+          <div><span class="ds-pill malachite">Цвет</span> «Сделай фон тёмным»</div>
+          <div><span class="ds-pill lavender">Объект</span> «Замени пробирку на колбу»</div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;span class="ds-pill"&gt;Стиль&lt;/span&gt;
+&lt;span class="ds-pill malachite"&gt;Цвет&lt;/span&gt;
+&lt;span class="ds-pill lavender"&gt;Объект&lt;/span&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Example Box</div><div class="comp-class">.ds-example</div></div>
+    <div class="comp-desc">Пример с тёмным заголовком и парами «было / хотим».</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body">
+          <div class="ds-example">
+            <div class="ds-example-header">Постановка задачи</div>
+            <div class="ds-example-body">
+              <div class="ds-example-row"><div class="ds-example-label">Было</div><div>Пробирка с синей жидкостью</div></div>
+              <div class="ds-example-row"><div class="ds-example-label">Хотим</div><div>Та же пробирка, жидкость красная</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-example"&gt;
+  &lt;div class="ds-example-header"&gt;Постановка задачи&lt;/div&gt;
+  &lt;div class="ds-example-body"&gt;
+    &lt;div class="ds-example-row"&gt;
+      &lt;div class="ds-example-label"&gt;Было&lt;/div&gt;
+      &lt;div&gt;Пробирка с синей жидкостью&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="ds-example-row"&gt;
+      &lt;div class="ds-example-label"&gt;Хотим&lt;/div&gt;
+      &lt;div&gt;Та же, жидкость красная&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Final Note</div><div class="comp-class">.ds-final</div></div>
+    <div class="comp-desc">Итоговый блок на тёмном фоне. Зелёный лейбл, белый текст.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body">
+          <div class="ds-final">
+            <div class="ds-final-label">Главное запомнить</div>
+            <p>Нейросеть понимает чёткие инструкции. Чем конкретнее текст — тем точнее результат.</p>
+            <p><strong>Описывайте словами → фиксируйте стиль → ограничивайте правки.</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-final"&gt;
+  &lt;div class="ds-final-label"&gt;Главное запомнить&lt;/div&gt;
+  &lt;p&gt;Нейросеть понимает чёткие инструкции…&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Описывайте → фиксируйте → ограничивайте.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Checklist</div><div class="comp-class">.ds-checklist · .ds-check-row · .ds-checkbox</div></div>
+    <div class="comp-desc">Чек-лист с малахитовыми пустыми чекбоксами.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body">
+          <div class="ds-checklist">
+            <div class="ds-check-row"><div class="ds-checkbox"></div><span>Формулы и цифры сверил с источником?</span></div>
+            <div class="ds-check-row"><div class="ds-checkbox"></div><span>Стиль совпадает с другими картинками серии?</span></div>
+            <div class="ds-check-row"><div class="ds-checkbox"></div><span>Не делал больше двух правок подряд?</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-checklist"&gt;
+  &lt;div class="ds-check-row"&gt;
+    &lt;div class="ds-checkbox"&gt;&lt;/div&gt;
+    &lt;span&gt;Формулы и цифры сверил?&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SPHERES ──────────────────────────── -->
+  <div class="section-label">04</div>
+  <h2 class="section-title">Сферы</h2>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Background Sphere</div><div class="comp-class">.ds-sphere · .malachite · .lavender · .sky</div></div>
+    <div class="comp-desc">Декоративная объёмная сфера. Размещается внизу страницы, частично за краем. Цвет и размер чередуются по страницам.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body">
+          <div class="sphere-stage">
+            <div class="ds-sphere malachite" style="width:140px;height:140px;right:-30px;bottom:-40px;"></div>
+            <div class="ds-sphere lavender" style="width:80px;height:80px;left:30px;bottom:-20px;"></div>
+            <div class="ds-sphere sky" style="width:110px;height:110px;left:50%;top:40%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-sphere malachite"
+     style="width:78mm;height:78mm;
+            right:-22mm;bottom:-30mm;"&gt;&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp">
+    <div class="comp-head"><div class="comp-name">Number Sphere</div><div class="comp-class">.ds-num-sphere</div></div>
+    <div class="comp-desc">Плоская сфера с цифрой внутри. Без объёма — текст должен читаться.</div>
+    <div class="split">
+      <div class="preview"><div class="preview-head"><span>preview</span></div>
+        <div class="preview-body" style="display:flex;gap:14px;">
+          <div class="ds-num-sphere">1</div>
+          <div class="ds-num-sphere lavender">2</div>
+          <div class="ds-num-sphere sky">3</div>
+        </div>
+      </div>
+      <div class="snippet"><div class="snippet-head"><span>html</span><button class="copy-btn">copy</button></div>
+<pre>&lt;div class="ds-num-sphere"&gt;1&lt;/div&gt;
+&lt;div class="ds-num-sphere lavender"&gt;2&lt;/div&gt;
+&lt;div class="ds-num-sphere sky"&gt;3&lt;/div&gt;</pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pre = btn.closest('.snippet').querySelector('pre');
+    const text = pre.textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'copied';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'copy';
+        btn.classList.remove('copied');
+      }, 1500);
+    }).catch(() => {
+      btn.textContent = 'select & ⌘C';
+      const range = document.createRange();
+      range.selectNode(pre);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
